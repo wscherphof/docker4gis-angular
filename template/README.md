@@ -9,5 +9,5 @@ Example:
 
 ```bash
 # from the component directory
-ng new ${DOCKER_USER}-app
+ng new {{DOCKER_USER}}-app
 ```
