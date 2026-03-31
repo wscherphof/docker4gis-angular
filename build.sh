@@ -2,11 +2,11 @@
 
 angular_json=$(find . -name angular.json | head -n 1)
 
-# Base component builds have no Angular app yet; extending app builds do.
+# If we're building not the base component, but an extension image, and there's
+# no angular.json, then we create a new Angular project.
 if [ -z "$angular_json" ] && ! [ "${DOCKER_USER:-}" = "docker4gis" ]; then
-	echo "No angular.json file found in this directory." >&2
-	echo "Create an Angular project first (\`ng new app\`), then run the build again." >&2
-	exit 1
+	which ng || npm install -g @angular/cli &&
+		ng new "$DOCKER_USER-app" --skip-git true || exit
 fi
 
 SRC=$(dirname "$angular_json")
