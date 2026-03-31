@@ -3,7 +3,7 @@
 function src() {
 	angular_json=$(find . -name angular.json | head -n 1)
 	SRC=$(dirname "$angular_json")
-	[ -n "$SRC" ]
+	[ -n "$angular_json" ]
 }
 
 # If we're building not the base component, but an extension image, and there's
