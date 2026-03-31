@@ -8,7 +8,7 @@ WORKDIR /src
 
 # Install dependencies.
 ONBUILD COPY $SRC/package.json $SRC/package-lock.json ./
-ONBUILD RUN npm install
+ONBUILD RUN npm ci
 
 # Build the application.
 ONBUILD COPY $SRC .
