@@ -22,3 +22,6 @@ COPY build.sh /.docker4gis/build.sh
 ONBUILD COPY conf /tmp/conf
 ONBUILD RUN touch /tmp/conf/args
 ONBUILD RUN cp /tmp/conf/args /.docker4gis
+
+# Add our specific conf files, which may be used by build.sh.
+COPY conf/app /.docker4gis/conf/app
